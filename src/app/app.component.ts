@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Product} from './product.model'
 import { from } from 'rxjs';
 
@@ -7,9 +7,10 @@ import { from } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'shoping-cart-test';
-  
+  promoCode = ''
+  counter: Number = 0
   producs: Product [] = [
     {
       id: 1,
@@ -24,14 +25,25 @@ export class AppComponent {
       name: "Macbook Air 2019",
       img: "https://laptoptcc.com/wp-content/uploads/2018/06/Laptop-TCC-Dell-XPS-9350-40.jpg",
       desc: "Hàng hết hạn sử dụng phế thải",
-      price: 2220080,
+      price: 2222220080,
       quantity: 12
     },
   ]
 
-
-  removeProduct = (id) => {
-    const indexOfProduct = this.producs.findIndex(item  => item.id == id)
+ ngOnInit () {
+   this.counter = this.producs.length
+ }
+  removeProduct = (item) => {
+    const indexOfProduct = this.producs.findIndex(item  => item.id == item.id) 
     this.producs.splice(indexOfProduct, 1)
+    alert("Đã xóa"+ item.name)
+    this.counter = this.producs.length
+  }
+
+  checkPromo = () => {
+    console.log("OK")
+    if (this.promoCode = 'durex') {
+      alert("Còn lâu mới giảm giá")
+    }
   }
 }

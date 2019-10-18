@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppComponent} from '../app.component'
+import {Input } from '@angular/core';
 import { from } from 'rxjs';
 
 @Component({
@@ -7,17 +8,7 @@ import { from } from 'rxjs';
   templateUrl: './card-headr.component.html',
   styleUrls: ['./card-headr.component.css']
 })
-export class CardHeadrComponent  extends AppComponent implements OnInit{
-
-  constructor() {
-    super();
-  }
-  
-  counter = this.producs.length
- 
-   ngOnInit() {
-      console.log("ss", this.counter)
-   }
-  
-
+export class CardHeadrComponent   {
+  @Input() counter: any;
+   
 }
